@@ -54,7 +54,7 @@ public class MainWindow {
         mainWindowMenuBar.add(helpMenu);
         
         informationMenu.add(passangersInformationMenuItem);
-        passangersInformationMenuItem.addActionListener(new NothingListener());
+        passangersInformationMenuItem.addActionListener(new ViewPassangerListener());
         informationMenu.add(flightInformationMenuItem);
         flightInformationMenuItem.addActionListener(new NothingListener());
         informationMenu.add(priceInformationMenuItem);
