@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class SearchPassanger {
+public class ViewPassanger {
     
     public void searchPassanger (String arg) throws SQLException {
         PassangerListTableModel pltm = new PassangerListTableModel();

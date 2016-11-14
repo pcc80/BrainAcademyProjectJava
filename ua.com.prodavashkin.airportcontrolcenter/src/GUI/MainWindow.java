@@ -28,8 +28,8 @@ public class MainWindow {
     private final JMenu helpMenu = new JMenu("Help");
     
     private final JMenuItem passangersInformationMenuItem = new JMenuItem("Passangers");
-    private final JMenuItem flightInformationMenuItem = new JMenuItem("Flight");
-    private final JMenuItem priceInformationMenuItem = new JMenuItem("Price");
+    private final JMenuItem flightInformationMenuItem = new JMenuItem("Flights");
+    private final JMenuItem priceInformationMenuItem = new JMenuItem("Prices");
 
     private final JMenuItem searchPassangerMenuItem = new JMenuItem("Search Passanger");
     private final JMenuItem searchPriceMenuItem = new JMenuItem("Search Price");

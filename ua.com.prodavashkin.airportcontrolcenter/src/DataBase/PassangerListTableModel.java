@@ -65,7 +65,7 @@ public class PassangerListTableModel extends AbstractTableModel{
                 + "INNER JOIN sex AS s ON p.sex = s.id "
                 + "INNER JOIN flight_number AS f ON p.flyght_number = f.id "
                 + "INNER JOIN salun_class AS salun ON p.salun_class = salun.id "
-                + "where p.first_name = \""+queryOption+"\" or p.last_name = \""+queryOption+"\" or p.passport = \""+queryOption+"\" ");
+                + "where p.first_name LIKE \""+queryOption+"%\" or p.last_name LIKE \""+queryOption+"%\" or p.passport LIKE \""+queryOption+"%\" ");
         while (connection.rs.next()) {
             String[] rowPassanger ={
                 connection.rs.getString("id"),
