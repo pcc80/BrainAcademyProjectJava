@@ -4,8 +4,7 @@ import GUI.ViewPassanger;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class ViewPassangerListener implements ActionListener{
 
@@ -15,7 +14,7 @@ public class ViewPassangerListener implements ActionListener{
         try {
             vp.ViewPassanger();
         } catch (SQLException ex) {
-            Logger.getLogger(ViewPassangerListener.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Something wrong !", "WRONG", JOptionPane.ERROR_MESSAGE);
         }
     }
     

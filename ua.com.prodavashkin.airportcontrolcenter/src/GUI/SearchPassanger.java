@@ -2,9 +2,6 @@ package GUI;
 
 import DataBase.PassangerListTableModel;
 import DataBase.ConnectingToDataBase;
-import java.awt.Point;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
@@ -22,7 +19,7 @@ public class SearchPassanger {
         searchModalPane.setTitle("Result Search...");
         searchModalPane.setBounds(100, 200, 900, 300);
         
-        pltm.addData(connection, arg);
+        boolean temp = pltm.addData(connection, arg);
         JTable searchPassangerResultTable = new JTable(pltm);
 //        searchPassangerResultTable.addMouseListener(new MouseAdapter() {
 //            @Override
@@ -47,7 +44,11 @@ public class SearchPassanger {
         JScrollPane searchScrolPane = new JScrollPane(searchPassangerResultTable);
         
         searchModalPane.add(searchScrolPane);
-        searchModalPane.setVisible(true);
+        if (temp == false) {
+            JOptionPane.showMessageDialog(null, "Your have no match in the database !", "WRONG", JOptionPane.ERROR_MESSAGE);
+        } else {
+            searchModalPane.setVisible(true);
+        }
               
     }
 }

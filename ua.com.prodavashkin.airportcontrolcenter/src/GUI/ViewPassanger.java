@@ -1,7 +1,7 @@
 package GUI;
 
 import DataBase.ConnectingToDataBase;
-import DataBase.ViewPassangerListTableModel;
+import DataBase.PassangerListTableModel;
 import java.sql.SQLException;
 import javax.swing.JDialog;
 import javax.swing.JScrollPane;
@@ -10,7 +10,7 @@ import javax.swing.JTable;
 public class ViewPassanger {
     
     public void ViewPassanger() throws SQLException {
-        ViewPassangerListTableModel vltm = new ViewPassangerListTableModel();
+        PassangerListTableModel pltm = new PassangerListTableModel();
         ConnectingToDataBase connection = new ConnectingToDataBase();
         
         JDialog viewModalPane = new JDialog();
@@ -18,8 +18,8 @@ public class ViewPassanger {
         viewModalPane.setTitle("Passanger list...");
         viewModalPane.setBounds(100, 200, 900, 300);
         
-        vltm.addData(connection);
-        JTable ViewPassangerResultTable = new JTable(vltm);
+        pltm.addData(connection);
+        JTable ViewPassangerResultTable = new JTable(pltm);
 
         JScrollPane viewScrolPane = new JScrollPane(ViewPassangerResultTable);
         
