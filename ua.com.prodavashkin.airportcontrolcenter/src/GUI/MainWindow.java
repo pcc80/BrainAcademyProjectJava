@@ -56,7 +56,7 @@ public class MainWindow {
         informationMenu.add(passangersInformationMenuItem);
         passangersInformationMenuItem.addActionListener(new ViewPassangerListener());
         informationMenu.add(flightInformationMenuItem);
-        flightInformationMenuItem.addActionListener(new NothingListener());
+        flightInformationMenuItem.addActionListener(new ViewFligthsListener());
         informationMenu.add(priceInformationMenuItem);
         priceInformationMenuItem.addActionListener(new NothingListener());
         
@@ -65,7 +65,7 @@ public class MainWindow {
         searchMenu.add(searchPriceMenuItem);
         searchPriceMenuItem.addActionListener(new NothingListener());
         searchMenu.add(searchFlightNumberMenuItem);
-        searchFlightNumberMenuItem.addActionListener(new NothingListener());
+        searchFlightNumberMenuItem.addActionListener(new SearchFlightsListener());
         searchMenu.add(searchPortMenuItem);
         searchPortMenuItem.addActionListener(new NothingListener());
         
