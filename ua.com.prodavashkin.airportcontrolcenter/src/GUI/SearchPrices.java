@@ -1,17 +1,17 @@
 package GUI;
 
 import DataBase.ConnectingToDataBase;
-import DataBase.FlightsListTableModel;
+import DataBase.PricesListTableModel;
 import java.sql.SQLException;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class SearchFlights {
+public class SearchPrices {
     
     public void SearchFlights (String arg) throws SQLException {
-        FlightsListTableModel fltm = new FlightsListTableModel();
+        PricesListTableModel prltm = new PricesListTableModel();
         ConnectingToDataBase connection = new ConnectingToDataBase();
         
         JDialog searchModalPane = new JDialog();
@@ -19,8 +19,8 @@ public class SearchFlights {
         searchModalPane.setTitle("Result Search...");
         searchModalPane.setBounds(100, 200, 600, 300);
         
-        boolean temp = fltm.addData(connection, arg);
-        JTable searchFlightsResultTable = new JTable(fltm);
+        boolean temp = prltm.addData(connection, arg);
+        JTable searchFlightsResultTable = new JTable(prltm);
 //        searchPassangerResultTable.addMouseListener(new MouseAdapter() {
 //            @Override
 //            public void mouseClicked(MouseEvent e)

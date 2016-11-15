@@ -58,12 +58,12 @@ public class MainWindow {
         informationMenu.add(flightInformationMenuItem);
         flightInformationMenuItem.addActionListener(new ViewFligthsListener());
         informationMenu.add(priceInformationMenuItem);
-        priceInformationMenuItem.addActionListener(new NothingListener());
+        priceInformationMenuItem.addActionListener(new ViewPricesListener());
         
         searchMenu.add(searchPassangerMenuItem);
         searchPassangerMenuItem.addActionListener(new SearchPassengerListener());
         searchMenu.add(searchPriceMenuItem);
-        searchPriceMenuItem.addActionListener(new NothingListener());
+        searchPriceMenuItem.addActionListener(new SearchPricesListener());
         searchMenu.add(searchFlightNumberMenuItem);
         searchFlightNumberMenuItem.addActionListener(new SearchFlightsListener());
         searchMenu.add(searchPortMenuItem);
