@@ -17,5 +17,4 @@ public class ViewPassangerListener implements ActionListener{
             JOptionPane.showMessageDialog(null, "Something wrong !", "WRONG", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
 }

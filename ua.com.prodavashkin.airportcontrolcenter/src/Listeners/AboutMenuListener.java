@@ -10,5 +10,4 @@ public class AboutMenuListener implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "AirPort Control Center Application ("+Main.Main.getVersionApp()+")\nProject by Brain Academy\nCreated by PheNiX\n2016\n", "About", JOptionPane.PLAIN_MESSAGE);
     }
-    
 }

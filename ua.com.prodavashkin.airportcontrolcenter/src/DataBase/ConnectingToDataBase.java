@@ -8,11 +8,9 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
  
 public class ConnectingToDataBase {
- 
     static final String URL = "jdbc:mysql://194.28.172.166:3306/prodavas_airport";
     static final String USER = "prodavas_airport";
     static final String PASSWORD = "testpass";
- 
     public static Connection con;
     public static Statement stmt;
     public static ResultSet rs;
@@ -21,7 +19,6 @@ public class ConnectingToDataBase {
         try {
             con = DriverManager.getConnection(URL, USER, PASSWORD);
             stmt = con.createStatement();
-            System.out.println("Connection Ok !");
         } catch (SQLException sqlEx) {
             JOptionPane.showInternalMessageDialog(null, "Wrong conection to DB! ", "CONNECTION", JOptionPane.ERROR_MESSAGE);
         }
@@ -31,7 +28,5 @@ public class ConnectingToDataBase {
         rs.close();
         stmt.close();
         con.close();
-        System.out.println("Connection close !");
     }
-    
 }

@@ -17,5 +17,4 @@ public class ViewFligthsListener implements ActionListener{
             JOptionPane.showMessageDialog(null, "Something wrong !", "WRONG", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
 }

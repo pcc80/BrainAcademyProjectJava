@@ -1,11 +1,10 @@
 package DataBase;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
-import java.sql.SQLException;
 
 public final class PassangerListTableModel extends AbstractTableModel{
-
     private final int columnCount = 9;
     private final ArrayList<String[]> passangersArrayList;
     
@@ -47,7 +46,6 @@ public final class PassangerListTableModel extends AbstractTableModel{
         String[] rows = passangersArrayList.get(rowIndex);
         return rows[columnIndex];
     }
-    
     
     public void addData (String [] row) {
         String[] rowPassanger = new String[getColumnCount()];

@@ -10,5 +10,4 @@ public class NotHaveUpdateListener implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         JOptionPane.showMessageDialog(null, "You have last update application !");
     }
-    
 }
