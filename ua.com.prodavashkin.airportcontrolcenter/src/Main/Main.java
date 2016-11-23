@@ -4,9 +4,8 @@ import GUI.LoginWindow;
 
 public class Main {
     
-    private static String versionApp = "v.0.8.264";
+    private static String versionApp = "v.0.16.367";
     private static int accessLevel;
-    private static int id;
     private static String firstName;
     private static String lastName;
     
@@ -16,14 +15,6 @@ public class Main {
 
     public static void setAccessLevel(int aAccessLevel) {
         accessLevel = aAccessLevel;
-    }
-    
-    public static int getId() {
-        return id;
-    }
-
-    public static void setId(int aId) {
-        id = aId;
     }
     
     public static String getVersionApp () {
@@ -50,8 +41,13 @@ public class Main {
         lastName = aLastName;
     }
 
+
+
     public static void main(String[] args) {
+
         LoginWindow loginWindow = new GUI.LoginWindow();
         loginWindow.loginingWindows();
+
     }
+
 }

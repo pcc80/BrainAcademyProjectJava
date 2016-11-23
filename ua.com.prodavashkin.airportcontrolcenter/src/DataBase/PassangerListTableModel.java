@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 public final class PassangerListTableModel extends AbstractTableModel{
+
     private final int columnCount = 9;
     private final ArrayList<String[]> passangersArrayList;
     
@@ -35,7 +36,7 @@ public final class PassangerListTableModel extends AbstractTableModel{
             case 4: return "Birthday";
             case 5: return "Nationality";
             case 6: return "Passport";
-            case 7: return "Flyght Number";
+            case 7: return "Flight Number";
             case 8: return "Salun Class";
         }
         return "";
@@ -54,7 +55,9 @@ public final class PassangerListTableModel extends AbstractTableModel{
     }
     
     public boolean addData (ConnectingToDataBase connection, String queryOption) throws SQLException {
+
         boolean refer = true;
+
         connection.connect();
         connection.rs = connection.stmt.executeQuery(
                 "SELECT p.id, p.first_name, p.last_name, s.sex, p.date_of_birthday, p.nationality, p.passport, f.flight_number, salun.salun_type_full "
@@ -84,6 +87,7 @@ public final class PassangerListTableModel extends AbstractTableModel{
     } 
     
     public void addData (ConnectingToDataBase connection) throws SQLException {
+
         connection.connect();
         connection.rs = connection.stmt.executeQuery(
                 "SELECT p.id, p.first_name, p.last_name, s.sex, p.date_of_birthday, p.nationality, p.passport, f.flight_number, salun.salun_type_full "
@@ -91,6 +95,7 @@ public final class PassangerListTableModel extends AbstractTableModel{
                 + "INNER JOIN sex AS s ON p.sex = s.id "
                 + "INNER JOIN flight_number AS f ON p.flyght_number = f.id "
                 + "INNER JOIN salun_class AS salun ON p.salun_class = salun.id");
+
         while (connection.rs.next()) {
             String[] rowPassanger ={
                 connection.rs.getString("id"),
@@ -107,4 +112,5 @@ public final class PassangerListTableModel extends AbstractTableModel{
         }
         connection.logout();
     } 
+
 }

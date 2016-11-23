@@ -7,11 +7,11 @@ import javax.swing.JOptionPane;
 
 
 
-public class NothingListener implements ActionListener{
-    
+public class SearchUpdateListener implements ActionListener{
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        JOptionPane.showMessageDialog(null, "This menu will be work in next update !");
+        JOptionPane.showMessageDialog(null, "You have last update application !");
     }
 
 }

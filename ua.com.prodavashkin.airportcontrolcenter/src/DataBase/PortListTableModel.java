@@ -50,7 +50,6 @@ public final class PortListTableModel extends AbstractTableModel{
     }
     
     public boolean addData (ConnectingToDataBase connection, String queryOption) throws SQLException {
-        System.out.println(queryOption);
         boolean refer = true;
         connection.connect();
         connection.rs = connection.stmt.executeQuery(

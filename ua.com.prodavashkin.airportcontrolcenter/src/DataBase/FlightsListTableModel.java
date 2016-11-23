@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 public final class FlightsListTableModel extends AbstractTableModel{
+
     private final int columnCount = 5;
     private final ArrayList<String[]> flightsArrayList;
     
@@ -50,8 +51,9 @@ public final class FlightsListTableModel extends AbstractTableModel{
     }
     
     public boolean addData (ConnectingToDataBase connection, String queryOption) throws SQLException {
-        System.out.println(queryOption);
+
         boolean refer = true;
+
         connection.connect();
         connection.rs = connection.stmt.executeQuery(
                 "SELECT fn.id, fn.flight_number, p.port, p2.port AS p2, fs.flight_status "
@@ -77,6 +79,7 @@ public final class FlightsListTableModel extends AbstractTableModel{
     } 
     
     public void addData (ConnectingToDataBase connection) throws SQLException {
+
         connection.connect();
         connection.rs = connection.stmt.executeQuery(
                 "SELECT fn.id, fn.flight_number, p.port, p2.port AS p2, fs.flight_status " +
@@ -84,6 +87,7 @@ public final class FlightsListTableModel extends AbstractTableModel{
                 "INNER JOIN port AS p ON fn.port_arrived = p.id " +
                 "INNER JOIN port2 AS p2 ON fn.port_departured = p2.id " +
                 "INNER JOIN flight_status AS fs ON fn.flight_status = fs.id");
+
         while (connection.rs.next()) {
             String[] rowPassanger ={
                 connection.rs.getString("id"),
@@ -96,4 +100,5 @@ public final class FlightsListTableModel extends AbstractTableModel{
         }
         connection.logout();
     } 
+
 }

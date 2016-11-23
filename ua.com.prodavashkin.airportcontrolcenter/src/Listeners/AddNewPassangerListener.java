@@ -1,27 +1,20 @@
 package Listeners;
 
-import GUI.ViewPrices;
-
+import GUI.AddNewPassanger;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
 
-
-
-public class ViewPricesListener implements ActionListener{
+public class AddNewPassangerListener implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        ViewPrices vp = new ViewPrices();
-
+        AddNewPassanger anp = new AddNewPassanger();
         try {
-            vp.ViewPrices();
+            anp.AddNewPassanger();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Something wrong !", "WRONG", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Soomthing wrong !", "WRONG", JOptionPane.ERROR_MESSAGE);
         }
     }
     
