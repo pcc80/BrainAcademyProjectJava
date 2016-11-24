@@ -5,6 +5,7 @@ import DataBase.UpdateDB;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
+import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
@@ -13,7 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class AddNewPassanger {
+public class AddNewPassanger extends JDialog {
     
     private String query;
     private String idFlightNumber;
@@ -100,26 +101,99 @@ public class AddNewPassanger {
         
         addWindow.setTitle("Add User");
         addWindow.setModal(true);
-        addWindow.setBounds(100, 220, 500, 300);
+        addWindow.setBounds(100, 220, 500, 350);
         addWindow.setResizable(false);
-        addWindow.getContentPane().setLayout(new CardLayout(0, 0));
+        addWindow.getContentPane();
         addWindow.add(contentPanel);
         
-        
-        contentPanel.add(firstNameLabel).setBounds(40, 45, 80, 25);
-        contentPanel.add(firstNameTextField).setBounds(130, 45, 150, 25);
-        contentPanel.add(lastNameLabel).setBounds(40, 75, 80, 25);
-        contentPanel.add(lastNameTextField).setBounds(130, 75, 150, 25);
-        contentPanel.add(passportLabel).setBounds(40, 105, 80, 25);
-        contentPanel.add(passportTextField).setBounds(130, 105, 150, 25);
-        contentPanel.add(nationalityLabel).setBounds(40, 135, 80, 25);
-        contentPanel.add(nationalityTextField).setBounds(130, 135, 150, 25);
-        contentPanel.add(birthdayLabel).setBounds(40, 165, 80, 25);
-        contentPanel.add(yearBirthdayComboBox).setBounds(130, 165, 75, 25);
-        contentPanel.add(mounthBirthdayComboBox).setBounds(210, 165, 50, 25);
-        contentPanel.add(dayBirthdayComboBox).setBounds(265, 165, 50, 25);
-        contentPanel.add(sexLabel).setBounds(40, 195, 80, 25);
-        contentPanel.add(sexComboBox).setBounds(130, 195, 150, 25);
+        GroupLayout layout = new GroupLayout(contentPanel);
+        contentPanel.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                    .addComponent(firstNameLabel)
+                    .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(passportLabel)
+                        .addComponent(lastNameLabel)
+                        .addComponent(nationalityLabel)
+                        .addComponent(birthdayLabel)
+                        .addComponent(sexLabel)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(firstNameTextField)
+                    .addComponent(lastNameTextField)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(yearBirthdayComboBox, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mounthBirthdayComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dayBirthdayComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(nationalityTextField)
+                    .addComponent(passportTextField)
+                    .addComponent(sexComboBox, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                    .addComponent(flightNumberLabel)
+                    .addComponent(flightNumberComboBox, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(salunClassLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(salunClassComboBox, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(saveButton, GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
+                .addGap(45, 45, 45))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(firstNameLabel)
+                    .addComponent(firstNameTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(flightNumberLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(lastNameLabel)
+                    .addComponent(lastNameTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(flightNumberComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(passportLabel)
+                    .addComponent(passportTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salunClassLabel))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(nationalityLabel)
+                    .addComponent(nationalityTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salunClassComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(birthdayLabel)
+                    .addComponent(yearBirthdayComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mounthBirthdayComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dayBirthdayComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(sexLabel)
+                    .addComponent(sexComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saveButton, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(44, Short.MAX_VALUE))
+        );
+
+        contentPanel.add(firstNameLabel);
+        contentPanel.add(firstNameTextField);
+        contentPanel.add(lastNameLabel);
+        contentPanel.add(lastNameTextField);
+        contentPanel.add(passportLabel);
+        contentPanel.add(passportTextField);
+        contentPanel.add(nationalityLabel);
+        contentPanel.add(nationalityTextField);
+        contentPanel.add(birthdayLabel);
+        contentPanel.add(yearBirthdayComboBox);
+        contentPanel.add(mounthBirthdayComboBox);
+        contentPanel.add(dayBirthdayComboBox);
+        contentPanel.add(sexLabel);
+        contentPanel.add(sexComboBox);
         saveButton.addActionListener((ActionEvent e) -> {
             if (firstNameTextField.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null, "First Name area is empty !", "WRONG - EMPTY", JOptionPane.ERROR_MESSAGE);
@@ -178,12 +252,12 @@ public class AddNewPassanger {
                 JOptionPane.showMessageDialog(null, "New passanger added to DB !", "ADD USER", JOptionPane.INFORMATION_MESSAGE);
             }
         });
-        contentPanel.add(flightNumberLabel).setBounds(310, 45, 150, 25);
-        contentPanel.add(flightNumberComboBox).setBounds(310, 75, 150, 25);
-        contentPanel.add(salunClassLabel).setBounds(310, 105, 150, 25);
-        contentPanel.add(salunClassComboBox).setBounds(310, 135, 150, 25);
+        contentPanel.add(flightNumberLabel);
+        contentPanel.add(flightNumberComboBox);
+        contentPanel.add(salunClassLabel);
+        contentPanel.add(salunClassComboBox);
         
-        contentPanel.add(saveButton).setBounds(400, 230, 70, 25);
+        contentPanel.add(saveButton);
         
                         
         addWindow.setVisible(true);
