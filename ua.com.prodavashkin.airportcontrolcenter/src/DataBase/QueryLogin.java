@@ -12,7 +12,7 @@ public class QueryLogin {
         
         ConnectingToDataBase connection = new ConnectingToDataBase();
         connection.connect();
-        String query = "select id, password, access_level, first_name, last_name from users where login = '" + login + "'";
+        String query = "select password, access_level, first_name, last_name from users where login = '" + login + "'";
         connection.rs = connection.stmt.executeQuery(query);
         while (connection.rs.next()) {
             password = connection.rs.getString("password");

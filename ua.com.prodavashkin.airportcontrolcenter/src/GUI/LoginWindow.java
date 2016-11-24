@@ -1,10 +1,7 @@
 package GUI;
 
-import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,10 +12,11 @@ import javax.swing.JTextField;
 import javax.swing.JOptionPane;
 
 import DataBase.Logining;
+import javax.swing.GroupLayout;
 
 
 
-public final class LoginWindow {
+public final class LoginWindow extends JFrame{
 
     private JFrame frame;
     private JPanel loginPanel;
@@ -38,34 +36,37 @@ public final class LoginWindow {
         frame.setTitle("LOGIN FORM");
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().setLayout(new CardLayout(0,0));
+        frame.getContentPane();
 
         loginPanel = new JPanel();
-        frame.add(loginPanel, "login");
-        loginPanel.setLayout(null);
+        GroupLayout jPanelLayout = new GroupLayout(loginPanel);
+        loginPanel.setLayout(jPanelLayout);
+        jPanelLayout.setHorizontalGroup(
+            jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanelLayout.setVerticalGroup(
+            jPanelLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+       
+        JLabel appTitleLabel = new JLabel();
+        appTitleLabel.setFont(appTitleLabel.getFont().deriveFont((float)13));
+        appTitleLabel.setText("AirPort Control Center ("+Main.Main.getVersionApp()+")");
+ 
+        JLabel loginJLabel = new JLabel();
+        loginJLabel.setFont(loginJLabel.getFont().deriveFont((float)12));
+        loginJLabel.setText("Your Login :");
 
-        JLabel appTitleLabel = new JLabel("AirPort Control Center ("+Main.Main.getVersionApp()+")");
-        appTitleLabel.setBounds(20, 2, 200, 15);
-        loginPanel.add(appTitleLabel);
-
-        JLabel loginJLabel = new JLabel("Your Login :");
-        loginJLabel.setBounds(15, 30, 80, 20);
-        loginPanel.add(loginJLabel);
+        JLabel passwordJLabel = new JLabel();
+        passwordJLabel.setFont(passwordJLabel.getFont().deriveFont((float)12));
+        passwordJLabel.setText("Your Password :");
 
         JTextField loginTextField = new JTextField();
-        loginTextField.setBounds(120, 30, 100, 25);
-        loginPanel.add(loginTextField);
-
-        JLabel passwordJLabel = new JLabel("Your Password :");
-        passwordJLabel.setBounds(15, 70, 100, 25);
-        loginPanel.add(passwordJLabel);
-
+        
         JPasswordField passwordField = new JPasswordField();
-        passwordField.setBounds(120, 70, 100, 25);
-        loginPanel.add(passwordField);
-
+        
         JButton loginButton = new JButton("LOG IN");
-
         loginButton.addActionListener((ActionEvent e) -> {
             String login = loginTextField.getText().trim();
             String password = passwordField.getText().trim();
@@ -79,7 +80,7 @@ public final class LoginWindow {
                 try {
                     logIn = log.userVerification(login, password);
                 } catch (SQLException ex) {
-                    Logger.getLogger(LoginWindow.class.getName()).log(Level.SEVERE, null, ex);
+                    JOptionPane.showMessageDialog(null, "I don't know what wrong!", "Error", JOptionPane.ERROR_MESSAGE);
                 }
 
                 if (logIn == true) {
@@ -96,8 +97,49 @@ public final class LoginWindow {
             }
         });
 
-        loginButton.setBounds(75, 110, 100, 30);
-        loginPanel.add(loginButton);
+        frame.add(loginPanel);
+        
+        GroupLayout layout = new GroupLayout(loginPanel);
+        loginPanel.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(appTitleLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                            .addComponent(loginJLabel)
+                            .addComponent(passwordJLabel))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                            .addComponent(loginTextField, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(passwordField, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(loginButton)))
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(appTitleLabel)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(loginJLabel)
+                    .addComponent(loginTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                    .addComponent(passwordJLabel)
+                    .addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(loginButton)
+                .addContainerGap(55, Short.MAX_VALUE))
+        );
+
     }
 
 }

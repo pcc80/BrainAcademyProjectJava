@@ -11,5 +11,9 @@ public class UpdateDB {
         conn.stmt.executeUpdate(query);
         conn.logout();            
     }
+
+    public UpdateDB() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

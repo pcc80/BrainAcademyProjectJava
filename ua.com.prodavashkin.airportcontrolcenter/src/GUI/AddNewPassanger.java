@@ -158,7 +158,6 @@ public class AddNewPassanger {
                     }
                 }
                 
-                
                 query = "INSERT INTO passangers "
                         + "(flyght_number, first_name, last_name, nationality, passport, date_of_birthday, sex, salun_class) "
                         + "VALUES "

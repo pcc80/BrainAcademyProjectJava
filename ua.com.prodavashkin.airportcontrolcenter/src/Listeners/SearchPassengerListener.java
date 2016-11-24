@@ -17,7 +17,6 @@ public class SearchPassengerListener implements ActionListener{
     public void actionPerformed(ActionEvent e) {
 
         String searchText = JOptionPane.showInputDialog("Input: (<F.Name> or <L.Name> or <Passport number> :");
-
         if (searchText == null) {}
         else {
             searchText.trim();
