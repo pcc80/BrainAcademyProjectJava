@@ -23,7 +23,7 @@ public class ConnectingToDataBase {
             con = DriverManager.getConnection(URL, USER, PASSWORD);
             stmt = con.createStatement();
         } catch (SQLException sqlEx) {
-            JOptionPane.showInternalMessageDialog(null, "Wrong conection to DB! ", "CONNECTION", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Not conection to DB! ", "CONNECTION", JOptionPane.ERROR_MESSAGE);
         }
 
     }

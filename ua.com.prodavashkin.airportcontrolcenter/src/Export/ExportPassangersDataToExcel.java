@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -48,8 +49,9 @@ public class ExportPassangersDataToExcel {
         for (PassangerDataModel dataModel : dataList) {
             createSheetHeader(sheet, ++rowNum, dataModel);
         }
-
-        try (FileOutputStream out = new FileOutputStream(new File("Passanger List.xls"))) {
+        Date date = new Date(System.currentTimeMillis());
+        String customerDate = (1900 + date.getYear()) + "_" + (1 + date.getMonth()) + "_" + date.getDate() + "_" + date.getHours() + "_" + date.getMinutes() + "_" + date.getSeconds(); 
+        try (FileOutputStream out = new FileOutputStream(new File(customerDate+"_Passanger.xls"))) {
             workbook.write(out);
         } catch (IOException e) {
             e.printStackTrace();

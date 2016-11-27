@@ -44,8 +44,7 @@ public class MainWindow {
     private final JMenuItem searchPortMenuItem = new JMenuItem("Search Arrival/Departure Port");
     
     private final JMenuItem addNewPassangerUpdateMenuItem = new JMenuItem("New Passanger");
-    //private final JMenuItem editPassangerInfoUpdateMenuItem = new JMenuItem("Edit Passanger Info");
-    //private final JMenuItem deletePassangerUpdateMenuItem = new JMenuItem("Delete Passanger");
+    private final JMenuItem deletePassangerUpdateMenuItem = new JMenuItem("Delete Passanger");
     
     private final JMenuItem heplAboutMenuItem = new JMenuItem("About");
     private final JMenuItem newVersionMenuItem = new JMenuItem("Look New Version...");
@@ -112,8 +111,8 @@ public class MainWindow {
             addNewPassangerUpdateMenuItem.addActionListener(new AddNewPassangerListener());
 //            updatePassangerMenu.add(editPassangerInfoUpdateMenuItem);
 //            editPassangerInfoUpdateMenuItem.addActionListener(new NothingListener());
-//            updatePassangerMenu.add(deletePassangerUpdateMenuItem);
-//            deletePassangerUpdateMenuItem.addActionListener(new NothingListener());
+            updatePassangerMenu.add(deletePassangerUpdateMenuItem);
+            deletePassangerUpdateMenuItem.addActionListener(new DeletePassangerListener());
         }
         
         helpMenu.add(newVersionMenuItem);

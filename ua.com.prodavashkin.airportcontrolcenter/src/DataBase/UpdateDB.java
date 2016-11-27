@@ -1,6 +1,7 @@
 package DataBase;
 
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class UpdateDB {
     
@@ -13,7 +14,7 @@ public class UpdateDB {
     }
 
     public UpdateDB() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JOptionPane.showMessageDialog(null, "No parametr for update DB !", "Error", JOptionPane.ERROR_MESSAGE);
     }
     
 }

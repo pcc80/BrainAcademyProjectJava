@@ -85,7 +85,7 @@ public final class PassangerListTableModel extends AbstractTableModel{
         connection.logout();
         return refer;
     } 
-    
+
     public void addData (ConnectingToDataBase connection) throws SQLException {
 
         connection.connect();

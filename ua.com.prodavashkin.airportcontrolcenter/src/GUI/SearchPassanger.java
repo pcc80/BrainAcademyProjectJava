@@ -10,7 +10,9 @@ import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 
 import javax.swing.JDialog;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -22,6 +24,7 @@ public class SearchPassanger {
     private String query;
     private String id;
     private String updateText;
+    private String arg; // argument for SQL query
     
     public void searchPassanger (String arg) throws SQLException {
 
@@ -36,6 +39,7 @@ public class SearchPassanger {
         boolean temp = pltm.addData(connection, arg);
 
         JTable searchPassangerResultTable = new JTable(pltm);
+        
         searchPassangerResultTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e)
@@ -45,36 +49,46 @@ public class SearchPassanger {
                     Point p = e.getPoint();
                     int row = searchPassangerResultTable.rowAtPoint(p);
                     int column = searchPassangerResultTable.columnAtPoint(p); 
+                    id = (String) searchPassangerResultTable.getValueAt(row, 0);
                     switch (column) {
                         case 1:
-                            id = (String) searchPassangerResultTable.getValueAt(row, 0);
                             updateText = JOptionPane.showInputDialog(null, "Edit First name :", searchPassangerResultTable.getValueAt(row, column));
+                            updateText.trim();
                             query = "UPDATE passangers SET first_name = \""+updateText+"\" WHERE id = "+id+"";
+                            updateText = (String) searchPassangerResultTable.getValueAt(row, 2);
                             break;
                         case 2:
-                            id = (String) searchPassangerResultTable.getValueAt(row, 0);
                             updateText = JOptionPane.showInputDialog(null, "Edit Last name :", searchPassangerResultTable.getValueAt(row, column));
+                            updateText.trim();
                             query = "UPDATE passangers SET last_name = \""+updateText+"\" WHERE id = "+id+"";
                             break;
                         case 3:
-                            id = (String) searchPassangerResultTable.getValueAt(row, 0);
                             updateText = JOptionPane.showInputDialog(null, "Edit Sex :", searchPassangerResultTable.getValueAt(row, column));
+                            updateText.trim();
                             query = "UPDATE passangers SET sex = \""+updateText+"\" WHERE id = "+id+"";
-                            break;
-                        case 5:
-                            id = (String) searchPassangerResultTable.getValueAt(row, 0);
-                            updateText = JOptionPane.showInputDialog(null, "Edit Nationality :", searchPassangerResultTable.getValueAt(row, column));
-                            query = "UPDATE passangers SET nationality = \""+updateText+"\" WHERE id = "+id+"";
-                            break;
-                        case 6:
-                            id = (String) searchPassangerResultTable.getValueAt(row, 0);
-                            updateText = JOptionPane.showInputDialog(null, "Edit Passport :", searchPassangerResultTable.getValueAt(row, column));
-                            query = "UPDATE passangers SET passport = \""+updateText+"\" WHERE id = "+id+"";
+                            updateText = (String) searchPassangerResultTable.getValueAt(row, 2);
                             break;
                         case 4:
-                            id = (String) searchPassangerResultTable.getValueAt(row, 0);
                             updateText = JOptionPane.showInputDialog(null, "Edit Birthday :", searchPassangerResultTable.getValueAt(row, column));
-                            query = "UPDATE passangers SET birthday = \""+updateText+"\" WHERE id = "+id+"";
+                            updateText.trim();
+                            query = "UPDATE passangers SET date_of_birthday = \""+updateText+"\" WHERE id = "+id+"";
+                            updateText = (String) searchPassangerResultTable.getValueAt(row, 2);
+                            break;
+                        case 5:
+                            updateText = JOptionPane.showInputDialog(null, "Edit Nationality :", searchPassangerResultTable.getValueAt(row, column));
+                            updateText.trim();
+                            query = "UPDATE passangers SET nationality = \""+updateText+"\" WHERE id = "+id+"";
+                            updateText = (String) searchPassangerResultTable.getValueAt(row, 2);
+                            break;
+                        case 6:
+                            updateText = JOptionPane.showInputDialog(null, "Edit Passport :", searchPassangerResultTable.getValueAt(row, column));
+                            updateText.trim();
+                            query = "UPDATE passangers SET passport = \""+updateText+"\" WHERE id = "+id+"";
+                            updateText = (String) searchPassangerResultTable.getValueAt(row, 2);
+                            break;
+                        case 7:
+                            break;
+                        case 8:
                             break;
                         default:
                             break;
@@ -84,7 +98,14 @@ public class SearchPassanger {
                     } catch (SQLException ex) {
                         JOptionPane.showMessageDialog(null, "Thomething wrong", "WARNING", JOptionPane.ERROR_MESSAGE);
                     }
-                searchModalPane.dispose();
+                
+                    searchModalPane.dispose();
+                    SearchPassanger sp = new SearchPassanger();
+                    try {
+                        sp.searchPassanger(updateText);
+                    } catch (SQLException ex) {
+                         JOptionPane.showMessageDialog(null, "Thomething wrong", "WARNING", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
 
