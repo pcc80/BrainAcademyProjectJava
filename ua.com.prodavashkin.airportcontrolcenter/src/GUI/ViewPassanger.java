@@ -2,13 +2,10 @@ package GUI;
 
 import DataBase.ConnectingToDataBase;
 import DataBase.PassangerListTableModel;
-
 import java.sql.SQLException;
-
 import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
 
 
 public class ViewPassanger {

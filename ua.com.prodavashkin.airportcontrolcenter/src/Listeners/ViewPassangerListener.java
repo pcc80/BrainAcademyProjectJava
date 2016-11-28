@@ -1,14 +1,10 @@
 package Listeners;
 
 import GUI.ViewPassanger;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
-
 
 
 public class ViewPassangerListener implements ActionListener{

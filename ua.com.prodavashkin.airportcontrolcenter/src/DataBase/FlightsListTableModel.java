@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
+
 public final class FlightsListTableModel extends AbstractTableModel{
 
     private final int columnCount = 5;

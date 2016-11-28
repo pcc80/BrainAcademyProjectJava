@@ -6,18 +6,13 @@ import DataBase.UpdateDB;
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import java.sql.SQLException;
 import java.util.Arrays;
 import javax.swing.ImageIcon;
-import javax.swing.JComboBox;
-
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
-
 
 
 public class SearchPassanger {
@@ -75,6 +70,8 @@ public class SearchPassanger {
             @Override
             public void mouseClicked(MouseEvent e)
             {
+                
+                String temp ;
                 if (e.getClickCount() == 2)
                 {
                     Point p = e.getPoint();
@@ -96,7 +93,7 @@ public class SearchPassanger {
                             query = "UPDATE passangers SET last_name = \""+updateText+"\" WHERE id = "+id+"";
                             break;
                         case 3:
-                            String temp = (String)JOptionPane.showInputDialog(
+                            temp = (String)JOptionPane.showInputDialog(
                                 null,
                                 "Edit Sex :", "Sex Selector",
                                 JOptionPane.QUESTION_MESSAGE,

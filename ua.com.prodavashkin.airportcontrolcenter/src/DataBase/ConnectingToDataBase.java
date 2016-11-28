@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
  
+
 public class ConnectingToDataBase {
 
     static final String URL = "jdbc:mysql://194.28.172.166:3306/prodavas_airport";
@@ -17,6 +18,7 @@ public class ConnectingToDataBase {
     public static Statement stmt;
     public static ResultSet rs;
     
+
     public void connect() {
 
         try {

@@ -1,16 +1,15 @@
 package GUI;
 
 import java.awt.GridBagLayout;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-
 import Listeners.*;
 import java.awt.event.ActionEvent;
+
 
 public class MainWindow {
 
@@ -49,7 +48,6 @@ public class MainWindow {
     private final JMenuItem heplAboutMenuItem = new JMenuItem("About");
     private final JMenuItem newVersionMenuItem = new JMenuItem("Look New Version...");
     
-
 
     public void MainWindow () {
 
@@ -109,8 +107,6 @@ public class MainWindow {
             updateMenu.add(updatePassangerMenu);
             updatePassangerMenu.add(addNewPassangerUpdateMenuItem);
             addNewPassangerUpdateMenuItem.addActionListener(new AddNewPassangerListener());
-//            updatePassangerMenu.add(editPassangerInfoUpdateMenuItem);
-//            editPassangerInfoUpdateMenuItem.addActionListener(new NothingListener());
             updatePassangerMenu.add(deletePassangerUpdateMenuItem);
             deletePassangerUpdateMenuItem.addActionListener(new DeletePassangerListener());
         }

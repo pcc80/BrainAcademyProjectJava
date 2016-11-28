@@ -2,7 +2,6 @@ package GUI;
 
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,10 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JOptionPane;
-
 import DataBase.Logining;
 import javax.swing.GroupLayout;
-
 
 
 public final class LoginWindow extends JFrame{
@@ -31,6 +28,7 @@ public final class LoginWindow extends JFrame{
     }
     
     public void initialize() {
+
         frame = new JFrame ();
         frame.setBounds(100, 100, 250, 200);
         frame.setTitle("LOGIN FORM");

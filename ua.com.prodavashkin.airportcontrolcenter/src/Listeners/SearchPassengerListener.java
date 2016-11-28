@@ -1,12 +1,9 @@
 package Listeners;
 
 import GUI.SearchPassanger;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
 
 
@@ -20,18 +17,15 @@ public class SearchPassengerListener implements ActionListener{
         if (searchText == null) {}
         else {
             searchText.trim();
-
             if (searchText.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Your search text is empty !", "WRONG", JOptionPane.ERROR_MESSAGE);
             } else {
                 SearchPassanger sp = new SearchPassanger();
-
                 try {
                     sp.searchPassanger(searchText);
                 } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(null, "Soomthing wrong !", "WRONG", JOptionPane.ERROR_MESSAGE);
                 }
-
             }
         }
     }

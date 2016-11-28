@@ -1,14 +1,10 @@
 package Listeners;
 
 import GUI.ViewFlights;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
-
 
 
 public class ViewFligthsListener implements ActionListener{

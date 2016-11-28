@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
+
 public final class PassangerListTableModel extends AbstractTableModel{
 
     private final int columnCount = 9;

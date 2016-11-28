@@ -4,9 +4,11 @@ import GUI.ViewPassanger;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+
 public class DeletePassanger {
     
     public String[] DeletingFirstStep (String arg) throws SQLException {
+
         ConnectingToDataBase connection = new ConnectingToDataBase ();
         connection.connect();
         
@@ -20,6 +22,7 @@ public class DeletePassanger {
 
         String [] passangerInfo = new String [7];
         int i = 0;
+
         while (connection.rs.next()) {
             passangerInfo[i++] = connection.rs.getString("id");
             passangerInfo[i++] = connection.rs.getString("first_name");
@@ -58,7 +61,7 @@ public class DeletePassanger {
         ConnectingToDataBase connection = new ConnectingToDataBase ();
         connection.connect();
         
-        //connection.rs = connection.stmt.executeQuery("DELETE FROM passangers WHERE p.id = "+ arg);
+        connection.rs = connection.stmt.executeQuery("DELETE FROM passangers WHERE p.id = "+ arg);
 
         JOptionPane.showMessageDialog(null, "Passanger id=" + arg + " deleted from database !", "Sucessfull", JOptionPane.PLAIN_MESSAGE);
         ViewPassanger vp = new ViewPassanger();

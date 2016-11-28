@@ -2,18 +2,11 @@ package GUI;
 
 import DataBase.ConnectingToDataBase;
 import DataBase.PricesListTableModel;
-
-import java.awt.Point;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 import java.sql.SQLException;
-
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
 
 
 public class SearchPrices {

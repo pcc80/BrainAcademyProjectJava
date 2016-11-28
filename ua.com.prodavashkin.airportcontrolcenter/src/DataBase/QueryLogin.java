@@ -14,6 +14,7 @@ public class QueryLogin {
         connection.connect();
         String query = "select password, access_level, first_name, last_name from users where login = '" + login + "'";
         connection.rs = connection.stmt.executeQuery(query);
+
         while (connection.rs.next()) {
             password = connection.rs.getString("password");
             accessLevel = connection.rs.getInt("access_level");
@@ -26,6 +27,7 @@ public class QueryLogin {
                 Main.Main.setLastName(lastName);
             }
         }
+
         connection.logout();
         return info;
 

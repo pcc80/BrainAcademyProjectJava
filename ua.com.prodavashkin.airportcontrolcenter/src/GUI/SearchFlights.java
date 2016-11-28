@@ -2,14 +2,11 @@ package GUI;
 
 import DataBase.ConnectingToDataBase;
 import DataBase.FlightsListTableModel;
-
 import java.sql.SQLException;
-
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
 
 
 public class SearchFlights {

@@ -50,7 +50,6 @@ public class AddNewPassanger extends JDialog {
         }
         conn.logout();
         
-        
         JDialog addWindow = new JDialog();
         JPanel contentPanel = new JPanel(null);
         JButton saveButton = new JButton("Save");
@@ -255,9 +254,7 @@ public class AddNewPassanger extends JDialog {
         contentPanel.add(flightNumberComboBox);
         contentPanel.add(salunClassLabel);
         contentPanel.add(salunClassComboBox);
-        
         contentPanel.add(saveButton);
-        
                         
         addWindow.setVisible(true);
 
