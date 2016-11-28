@@ -8,11 +8,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import java.sql.SQLException;
+import java.util.Arrays;
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 
 import javax.swing.JDialog;
-import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
-import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -25,8 +26,39 @@ public class SearchPassanger {
     private String id;
     private String updateText;
     private String arg; // argument for SQL query
+    private int numberCellFromArray;
     
     public void searchPassanger (String arg) throws SQLException {
+
+        ImageIcon icon = new ImageIcon("images/question.png", "?"); 
+                
+        ConnectingToDataBase conn = new ConnectingToDataBase();
+        conn.connect();
+        
+        query = "SELECT sex FROM sex";
+        Object [] sexItemsArray = new String [conn.GetCounter(query)];
+        conn.rs = conn.stmt.executeQuery(query);
+        int i = 0;
+        while (conn.rs.next()) {
+            sexItemsArray[i++] = conn.rs.getString("sex");
+        }
+
+        query = "SELECT flight_number FROM flight_number";
+        Object [] flightNumberItemsArray = new String [conn.GetCounter(query)];
+        conn.rs = conn.stmt.executeQuery(query);
+        i = 0;
+        while (conn.rs.next()) {
+            flightNumberItemsArray[i++] = conn.rs.getString("flight_number");
+        }
+
+        query = "SELECT salun_type_full FROM salun_class";
+        Object [] flightStatusItemsArray = new String [conn.GetCounter(query)];
+        conn.rs = conn.stmt.executeQuery(query);
+        i = 0;
+        while (conn.rs.next()) {
+            flightStatusItemsArray[i++] = conn.rs.getString("salun_type_full");
+        }
+        conn.logout();
 
         PassangerListTableModel pltm = new PassangerListTableModel();
         ConnectingToDataBase connection = new ConnectingToDataBase();
@@ -35,7 +67,6 @@ public class SearchPassanger {
         searchModalPane.setModal(true);    
         searchModalPane.setTitle("Result Search...");
         searchModalPane.setBounds(100, 200, 900, 300);
-
         boolean temp = pltm.addData(connection, arg);
 
         JTable searchPassangerResultTable = new JTable(pltm);
@@ -52,7 +83,9 @@ public class SearchPassanger {
                     id = (String) searchPassangerResultTable.getValueAt(row, 0);
                     switch (column) {
                         case 1:
-                            updateText = JOptionPane.showInputDialog(null, "Edit First name :", searchPassangerResultTable.getValueAt(row, column));
+                            updateText = JOptionPane.showInputDialog(null, 
+                                    "Edit First name :", 
+                                    searchPassangerResultTable.getValueAt(row, column));
                             updateText.trim();
                             query = "UPDATE passangers SET first_name = \""+updateText+"\" WHERE id = "+id+"";
                             updateText = (String) searchPassangerResultTable.getValueAt(row, 2);
@@ -63,9 +96,15 @@ public class SearchPassanger {
                             query = "UPDATE passangers SET last_name = \""+updateText+"\" WHERE id = "+id+"";
                             break;
                         case 3:
-                            updateText = JOptionPane.showInputDialog(null, "Edit Sex :", searchPassangerResultTable.getValueAt(row, column));
-                            updateText.trim();
-                            query = "UPDATE passangers SET sex = \""+updateText+"\" WHERE id = "+id+"";
+                            String temp = (String)JOptionPane.showInputDialog(
+                                null,
+                                "Edit Sex :", "Sex Selector",
+                                JOptionPane.QUESTION_MESSAGE,
+                                icon,
+                                sexItemsArray,
+                                (Object) searchPassangerResultTable.getValueAt(row, column));
+                            numberCellFromArray = Arrays.asList(sexItemsArray).indexOf(temp); 
+                            query = "UPDATE passangers SET sex = \""+(numberCellFromArray+1)+"\" WHERE id = "+id+"";
                             updateText = (String) searchPassangerResultTable.getValueAt(row, 2);
                             break;
                         case 4:
@@ -87,8 +126,28 @@ public class SearchPassanger {
                             updateText = (String) searchPassangerResultTable.getValueAt(row, 2);
                             break;
                         case 7:
+                            temp = (String)JOptionPane.showInputDialog(
+                                null,
+                                "Edit Flight Number :", "Flight Number Selector",
+                                JOptionPane.QUESTION_MESSAGE,
+                                icon,
+                                flightNumberItemsArray,
+                                (Object) searchPassangerResultTable.getValueAt(row, column));
+                            numberCellFromArray = Arrays.asList(flightNumberItemsArray).indexOf(temp); 
+                            query = "UPDATE passangers SET flyght_number = \""+(numberCellFromArray+1)+"\" WHERE id = "+id+"";
+                            updateText = (String) searchPassangerResultTable.getValueAt(row, 2);
                             break;
                         case 8:
+                            temp = (String)JOptionPane.showInputDialog(
+                                null,
+                                "Edit Salun Class :", "Salun Class Selector",
+                                JOptionPane.QUESTION_MESSAGE,
+                                icon,
+                                flightStatusItemsArray,
+                                (Object) searchPassangerResultTable.getValueAt(row, column));
+                            numberCellFromArray = Arrays.asList(flightStatusItemsArray).indexOf(temp); 
+                            query = "UPDATE passangers SET salun_class = \""+(numberCellFromArray+1)+"\" WHERE id = "+id+"";
+                            updateText = (String) searchPassangerResultTable.getValueAt(row, 2);
                             break;
                         default:
                             break;
