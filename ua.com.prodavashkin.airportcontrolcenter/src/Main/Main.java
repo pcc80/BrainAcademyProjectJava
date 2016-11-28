@@ -4,7 +4,7 @@ import GUI.LoginWindow;
 
 public class Main {
     
-    private static String versionApp = "v.0.20.473";
+    private static String versionApp = "v.1.0.0";
     private static int accessLevel;
     private static String firstName;
     private static String lastName;

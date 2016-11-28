@@ -56,13 +56,12 @@ public class SearchPassanger {
         conn.logout();
 
         PassangerListTableModel pltm = new PassangerListTableModel();
-        ConnectingToDataBase connection = new ConnectingToDataBase();
 
         JDialog searchModalPane = new JDialog();
         searchModalPane.setModal(true);    
         searchModalPane.setTitle("Result Search...");
         searchModalPane.setBounds(100, 200, 900, 300);
-        boolean temp = pltm.addData(connection, arg);
+        boolean temp = pltm.addData(conn, arg);
 
         JTable searchPassangerResultTable = new JTable(pltm);
         
